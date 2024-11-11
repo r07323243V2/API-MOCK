@@ -10,13 +10,21 @@ pipeline {
     }
     stage ('Node Commands') {
       steps {
-        echo 'Iniciando build da imagem.'
+        echo 'Executando comandos node...'
         script {
           if (fileExists('library/Request.js')) {
             echo "File library/Request.js found!"
           } else {
             echo "File library/Request.js not found!"
           }
+        }
+      }
+    }
+    stage ('Git Commands') {
+      steps {
+        echo 'Executando comandos git...'
+        script {
+          sh 'git log --pretty=oneline -30 --first-parent --graph'
         }
       }
     }
