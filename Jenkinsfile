@@ -8,9 +8,16 @@ pipeline {
         echo 'Irei iniciar o processo da pipeline, isso pode demorar alguns minutos, te encontro no fim...'
       }
     }
-    stage ('Build Image') {
+    stage ('Node Commands') {
       steps {
         echo 'Iniciando build da imagem.'
+        node {
+          if (fileExists('library/Request.js')) {
+            echo "File library/Request.js found!"
+          } else {
+            echo "File library/Request.js not found!"
+          }
+        }
       }
     }
   }
