@@ -11,7 +11,7 @@ pipeline {
     stage ('Node Commands') {
       steps {
         echo 'Iniciando build da imagem.'
-        node {
+        script {
           if (fileExists('library/Request.js')) {
             echo "File library/Request.js found!"
           } else {
